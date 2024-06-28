@@ -68,4 +68,75 @@ Observability is key. Save every request and response made to the APIs to a **pr
 ---
 
 ## How to run
-Please fill this section as part of the assignment.
+
+In order to install the requitred packages, we use Poetry:
+* go into directory `project/`
+* run `poetry install`
+* run `poetry shell` (for convenience)
+
+### Data processing
+
+* Data exploration
+In order to explore the raw dataset `project/diamonds/data/raw_data/diamonds.csv`, run `project/diamonds/entrypoints/data_processing/do_explore_data.py`. The outputs, plots and report, can be found in the folder `project/diamonds/data/raw_data/diamonds.csv_report`.
+
+* Data cleaning
+In order to clean tha raw datset `project/diamonds/data/raw_data/diamonds.csv`, run `project/diamonds/entrypoints/data_processing/do_clean_data.py`. The outputs, cleaned data and the corresponding data exploration, can be found in `project/diamonds/data/clean_data/diamonds.csv` and in the folder `project/diamonds/data/clean_data/diamonds.csv_report`, respectively.
+
+* Data preprocessing
+In order to train the models, we need to preprocess the cleaned data `project/diamonds/data/clean_data/diamonds.csv`.
+Each model require a different preprocessing, to do this, run
+    * `project/diamonds/entrypoints/data_processing/do_preprocess_data.py --type basic` for linear regreession.  This creates `project/diamonds/data/clean_data/diamonds_basic_train.csv` and `project/diamonds/data/clean_data/diamonds_basic_test.csv`.
+    * `project/diamonds/entrypoints/data_processing/do_preprocess_data.py --type categorical` for gradient boosting.  This creates `project/diamonds/data/clean_data/diamonds_categorical_train.csv` and `project/diamonds/data/clean_data/diamonds_categorical_test.csv`.
+
+### Training
+
+**Before training the models, create the preprocessed data!**
+
+In order to train the models, run `project/diamonds/entrypoints/training/do_training.py`.
+
+The models are stored in `project/diamonds/data/models`:
+* the linear regression models are stored in `project/diamonds/data/models/lr`,
+* the gradient boosting models are stored in `project/diamonds/data/models/xgb`.
+
+The models names have timestamp, the actual models file have suffix `.sav`, while the corresponding metrics have suffix `.json`.
+
+### Inference
+
+In order to use a model for inference:
+* choose a model/models and modify `model_details` in the `main()` of `project/diamonds/entrypoints/inference/do_inference.py`
+* run `project/diamonds/entrypoints/inference/do_inference.py
+
+### API
+
+* Go into directory `project/diamonds/api` and run
+``
+uvicorn app:app --reload
+``
+This starts the server locally on `http://127.0.0.1:8000` by default.
+
+* Open Postman
+    * Predict the value of a diamond.
+        * POST `http://127.0.0.1:8000/predict`
+        * Request body (raw)
+        ``{
+            "carat": 1.0,
+            "cut": "Premium",
+            "color": "E",
+            "clarity": "VVS2",
+            "depth": 61.5,
+            "table": 55.0,
+            "x": 6.5,
+            "y": 6.5,
+            "z": 4.0
+        }``
+    * Given the features of a diamond, return n samples from the training dataset with the same cut, color, and clarity, and the most similar weight.
+        * POST `http://127.0.0.1:8000/similar_samples`
+        * Request body (raw)
+        ``{
+            "carat": 1.0,
+            "cut": "Premium",
+            "color": "E",
+            "clarity": "VVS2",
+            "n": 5
+        }``
+
