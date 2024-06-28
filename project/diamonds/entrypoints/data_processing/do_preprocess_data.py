@@ -1,6 +1,6 @@
 import argparse
 
-from diamonds.data_generation.data_preprocess import (
+from diamonds.data_processing.data_preprocess import (
     BasicDataPreprocess,
     CategoricalDataPreprocess,
 )

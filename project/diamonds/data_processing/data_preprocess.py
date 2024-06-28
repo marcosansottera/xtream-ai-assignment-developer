@@ -4,7 +4,7 @@ from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from diamonds.data_generation.data_loading import DataLoading
+from diamonds.data_processing.data_loading import DataLoading
 
 
 class AbstractDataPreprocess(ABC):

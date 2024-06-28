@@ -1,4 +1,4 @@
-from diamonds.data_generation.data_generation import save_split_csv
+from diamonds.data_processing.data_generation import save_split_csv
 from diamonds.paths import DiamondsDataDir
 
 if __name__ == "__main__":

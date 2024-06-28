@@ -6,7 +6,7 @@ from loguru import logger
 from mdutils.mdutils import MdUtils
 from pandas.plotting import scatter_matrix
 
-from diamonds.data_generation.data_loading import DataLoading
+from diamonds.data_processing.data_loading import DataLoading
 
 
 class DataExploration:

@@ -2,8 +2,8 @@ from pathlib import Path
 
 from loguru import logger
 
-from diamonds.data_generation.data_cleaning import DataCleaning
-from diamonds.data_generation.data_exploration import DataExploration
+from diamonds.data_processing.data_cleaning import DataCleaning
+from diamonds.data_processing.data_exploration import DataExploration
 from diamonds.paths import DiamondsDataDir
 
 

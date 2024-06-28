@@ -2,7 +2,7 @@ from pathlib import Path
 
 from loguru import logger
 
-from diamonds.data_generation.data_loading import DataLoading
+from diamonds.data_processing.data_loading import DataLoading
 
 
 class DataCleaning:
