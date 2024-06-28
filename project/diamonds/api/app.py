@@ -55,8 +55,11 @@ model_path_xgb = diamonds_models.xgb.path / "xgb_tuned_20240628_114612.sav"
 model_lr = joblib.load(model_path_lr)
 model_xgb = joblib.load(model_path_xgb)
 
+diamonds_api = DiamondsDataDir("api")
+diamonds_api_logs = "logs.db"
+
 def get_db_connection():
-    return sqlite_utils.Database("logs.db")
+    return sqlite_utils.Database(diamonds_api.path / diamonds_api_logs)
 
 def log_request_response(endpoint, request_data, response_data):
     db = get_db_connection()
