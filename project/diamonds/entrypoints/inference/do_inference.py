@@ -38,8 +38,8 @@ def main():
 
     diamonds_filename = "diamonds.csv"
     model_details = [
-        ("lr", "basic", "lr_20240627_234107.sav"),
-        ("xgb", "categorical", "xgb_tuned_20240627_234216.sav")
+        ("lr", "basic", "lr_20240628_114528.sav"),
+        ("xgb", "categorical", "xgb_tuned_20240628_114612.sav")
     ]
     predictions = {}
     for model_type, preprocess_type, model_timestamp in model_details:
