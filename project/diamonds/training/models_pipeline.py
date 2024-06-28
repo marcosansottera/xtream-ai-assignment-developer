@@ -11,7 +11,7 @@ from sklearn.metrics import mean_absolute_error, r2_score
 from sklearn.pipeline import Pipeline
 from xgboost import XGBRegressor
 
-from diamonds.entrypoints.data_generation.do_preprocess_data import (
+from diamonds.entrypoints.data_processing.do_preprocess_data import (
     BasicDataPreprocess,
     CategoricalDataPreprocess,
 )

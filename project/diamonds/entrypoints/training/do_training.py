@@ -1,7 +1,7 @@
 from sklearn.linear_model import LinearRegression
 from xgboost import XGBRegressor
 
-from diamonds.entrypoints.data_generation.do_preprocess_data import (
+from diamonds.entrypoints.data_processing.do_preprocess_data import (
     BasicDataPreprocess,
     CategoricalDataPreprocess,
 )

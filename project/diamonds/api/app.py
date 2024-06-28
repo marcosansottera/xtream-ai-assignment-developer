@@ -5,7 +5,7 @@ import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-from diamonds.entrypoints.data_generation.do_preprocess_data import (
+from diamonds.entrypoints.data_processing.do_preprocess_data import (
     BasicDataPreprocess,
     CategoricalDataPreprocess,
 )
